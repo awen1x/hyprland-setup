@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+WALL_DIR="$HOME/wallpapers"
+LAST_FILE="/tmp/.last_wall"
+WAYBAR_CSS="$HOME/.cache/wal/colors-rgba.css"
+
+# --- Collect wallpapers ---
+mapfile -t WALLS < <(find "$WALL_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \))
+COUNT=${#WALLS[@]}
+[ "$COUNT" -eq 0 ] && exit 1
+
+# --- Load last wallpaper ---
+LAST=""
+[ -f "$LAST_FILE" ] && LAST=$(cat "$LAST_FILE")
+
+# --- Pick random non-repeating ---
+while true; do
+    NEXT="${WALLS[RANDOM % COUNT]}"
+    [[ "$NEXT" != "$LAST" ]] && break
+done
+echo "$NEXT" > "$LAST_FILE"
+
+# --- Set wallpaper with animation ---
+swww img "$NEXT" --transition-type grow --transition-fps 60 --transition-duration 1
+
+# --- Generate pywal colors ---
+wal -q -i "$NEXT"
+
+pkill waybar
+sleep 1
+waybar &
+
+# --- Reload kitty colors ---
+pkill -USR1 kitty 2>/dev/null

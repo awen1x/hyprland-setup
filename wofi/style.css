@@ -1,0 +1,82 @@
+@import url("/home/awen1x/.cache/wal/colors-waybar.css");
+
+* {
+    font-family: "JetBrainsMono Nerd Font", Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+window {
+    margin: 10px auto;
+    background: transparent;
+}
+
+#outer-box {
+    margin: 12px;
+    background: @background;
+    border-radius: 20px;
+    border: 1px solid rgba(137, 180, 250, 0.18);
+    padding: 0;                      /* important – removes the old gap */
+    overflow: hidden;                /* ensures corners stay perfectly round */
+}
+
+#img {
+    margin-right: 14px;
+    padding-left: 10px;
+}
+
+#input {
+    margin: 0;
+    padding: 16px 20px 12px 20px;     /* top padding only, no bottom gap */
+    background: transparent;         /* no separate input background */
+    border: none;
+    color: #cdd6f4;
+    font-size: 18px;                 /* slightly bigger for prominence */
+}
+
+#input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#input::placeholder {
+    color: @foreground;
+    opacity: 0.7;
+}
+
+#scroll {
+    margin: 0 12px 12px 12px;         /* only bottom + sides margin */
+}
+
+#inner-box {
+    background: transparent;         /* removes the old inner panel */
+    border: none;
+    padding: 0;
+}
+
+#entry {
+    padding: 11px 10px;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+#entry:selected {
+    background: @foreground;
+    color: #1e1e2e;
+    font-weight: 700;
+    border-radius: 14px;
+}
+
+#entry:hover {
+    background: rgba(205, 214, 244, 0.18);
+}
+
+#text:selected {
+    color: #1e1e2e;
+}
+
+/* Optional: tiny separator line if you want a subtle hint */
+#input {
+    border-bottom: 1px solid rgba(137, 180, 250, 0.15);
+    margin-bottom: 8px;
+}
