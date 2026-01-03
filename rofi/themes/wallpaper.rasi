@@ -1,0 +1,94 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    font: "Lexend, sans-serif 11";
+    font-weight: 600;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+window {
+    width: 50%;
+    height: 56%;
+    padding: 0;
+    border-radius: 14px;
+    border: 1px;
+    border-color: rgba(137, 180, 250, 0.22);
+    location: center;
+    anchor: center;
+    children: [mainbox];
+}
+
+mainbox {
+    background-color: @background;
+    border-radius: 14px;
+    padding: 12px;
+    spacing: 10px;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 0 0 1px 0;
+    border-color: rgba(137, 180, 250, 0.15);
+    children: [prompt, entry];
+}
+
+entry {
+    background-color: transparent;
+    text-color: @foreground;
+    placeholder-color: rgba(255, 255, 255, 0.35);
+}
+
+listview {
+    columns: 4;
+    spacing: 10px;
+    fixed-height: false;
+    scrollbar: true;
+    scrollbar-width: 6px;
+    background-color: transparent;
+}
+
+element {
+    padding: 6px;
+    border-radius: 12px;
+    orientation: vertical;
+    background-color: transparent;
+}
+
+element-hover {
+    background-color: rgba(205, 214, 244, 0.08);
+}
+
+element selected {
+    background-color: @foreground;
+    text-color: #1e1e2e;
+}
+
+element selected element-hover {
+    background-color: @foreground;
+}
+
+element-icon {
+    size: 180px;
+    background-color: transparent;
+    margin: 0px;
+}
+
+element-text {
+    enabled: true;
+    horizontal-align: 0.5;
+    vertical-align: 0.0;
+    padding: 4px 0px 0px 0px;
+    background-color: transparent;
+}
+
+element-text selected {
+    color: #1e1e2e;
+    font-weight: 700;
+}
+
+configuration {
+    show-icons: true;
+}

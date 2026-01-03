@@ -1,0 +1,90 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    font: "Lexend, sans-serif 11";
+    font-weight: 600;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+window {
+    width: 22%;
+    max-height: 45%;
+    padding: 0;
+    border-radius: 12px;
+    border: 1px;
+    border-color: rgba(137, 180, 250, 0.18);
+    children: [mainbox];
+}
+
+mainbox {
+    margin: 0;
+    background-color: @background;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+inputbar {
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 0 0 1px 0;
+    border-color: rgba(137, 180, 250, 0.15);
+    children: [prompt, entry];
+}
+
+prompt {
+    margin-right: 8px;
+    padding-left: 4px;
+}
+
+entry {
+    font-size: 13px;
+    color: #cdd6f4;
+    background-color: transparent;
+}
+
+listview {
+    margin: 4px 0;
+    background-color: transparent;
+    lines: 8;
+    fixed-height: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 1.4em;
+    margin: 0px 8px 0px 4px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    margin: 0px 4px;
+    vertical-align: 0.5;
+}
+
+element-hover {
+    background-color: rgba(205, 214, 244, 0.1);
+}
+
+element selected {
+    background-color: @foreground;
+    text-color: #1e1e2e;
+    font-weight: 700;
+}
+
+element-text selected {
+    color: #1e1e2e;
+}
+
+configuration {
+    display-drun: "Drun  : ";
+    display-run: "execute: ";
+    display-window: "window: ";
+    show-icons: true;
+}
