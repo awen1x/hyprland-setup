@@ -3,23 +3,24 @@
     "logo": {
         "source": "~/.config/fastfetch/arch_minimal.txt",
         "padding": {
-	        "top": 1
-	    }
+            "top": 1
+        }
     },
     "display": {
         "separator": " ›  "
     },
     "modules": [
-	"break",
+        "break",
         {
             "type": "os",
             "key": "OS  ",
-            "keyColor": "31"  // = color1
+            "keyColor": "31"
         },
         {
-            "type": "kernel",
-            "key": "KER ",
-            "keyColor": "32"
+            "type": "disk",
+            "key": "HOME",
+            "folders": "/home",
+            "keyColor": "blue"
         },
         {
             "type": "packages",
@@ -33,15 +34,20 @@
             "keyColor": "34"
         },
         {
-            "type": "terminal",
-            "key": "TER ",
-            "keyColor": "35"
+            "type": "memory",
+            "key": "RAM ",
+            "keyColor": "35",
+            "format": "{used} / {total} ({percentage})"
         },
         {
             "type": "wm",
             "key": "WM  ",
             "keyColor": "36"
         },
-        "break"
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
     ]
 }
