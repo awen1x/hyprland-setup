@@ -1,22 +1,20 @@
 // -*- mode: jsonc -*-
 {
     "position": "top",
-
     "modules-left": [
-        "custom/wofi",
+        "custom/rofi",
         "hyprland/workspaces",
         "custom/media"
     ],
-
     "modules-center": [
         "clock"
     ],
-
     "modules-right": [
         "tray",
         "pulseaudio",
         "network",
-        "battery"
+        "battery",
+        "custom/swaync"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -96,8 +94,7 @@
         }
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {bandwidthDownBytes}|{bandwidthUpBytes}",
+        "format-wifi": " {essid}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{essid}",
         "tooltip-format": " ",
@@ -106,10 +103,10 @@
     },
     "pulseaudio": {
         "scroll-step": 1,
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
@@ -138,9 +135,9 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/wofi": {
+    "custom/rofi": {
         "format": "",
-        "on-click": "wofi --show drun --allow-images --allow-markup",
+        "on-click": "rofi -show drun -show-icons",
         "tooltip": false
     },
     "hyprland/workspaces": {
@@ -158,5 +155,25 @@
         "persistent-workspaces": {
             "*": 4
         }
+    },
+    "custom/swaync": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫", // Bell with notifications
+            "none": "󰂚", // No notifications
+            "dnd-notification": "󰂛", // DND with notifications
+            "dnd-none": "󰂛", // DND no notifications
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
