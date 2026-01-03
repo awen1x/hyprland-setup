@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+WALL_DIR="$HOME/Pictures/wallpapers"
+LAST_FILE="$HOME/.cache/.last_wall"  # Fixed path (was "/.cache/.last_wall" before)
+
+# Ensure cache directory exists
+mkdir -p "$(dirname "$LAST_FILE")"
+
+# Collect wallpapers
+mapfile -t WALLS < <(find "$WALL_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) | sort)
+
+COUNT=${#WALLS[@]}
+[ "$COUNT" -eq 0 ] && notify-send "Wallpaper Selector" "No wallpapers found in $WALL_DIR" && exit 1
+
+# Generate rofi entries: basename as text, full path as icon
+printf '' > /tmp/rofi_wallpapers  # temporary null-byte separated list
+
+for img in "${WALLS[@]}"; do
+    printf "%s\0icon\x1f%s\n" "$(basename "$img")" "$img"
+done > /tmp/rofi_wallpapers
+
+# Launch rofi with grid preview
+SELECTED=$(rofi -dmenu \
+    -p "Wallpaper  : " \
+    -show-icons \
+    -theme "themes/wallpaper" \
+    < /tmp/rofi_wallpapers)
+
+# Clean up temp file
+rm -f /tmp/rofi_wallpapers
+
+# If nothing selected, exit
+[[ -z "$SELECTED" ]] && exit 0
+
+# Find full path from basename
+FULL_PATH=""
+for img in "${WALLS[@]}"; do
+    if [[ "$(basename "$img")" == "$SELECTED" ]]; then
+        FULL_PATH="$img"
+        break
+    fi
+done
+
+[[ -z "$FULL_PATH" ]] && exit 1
+
+# --- Apply wallpaper and full post-processing (same as your random script) ---
+
+# Set with swww animation
+swww img "$FULL_PATH" --transition-type any --transition-fps 60 --transition-duration 1
+
+# Save as last used (for random script compatibility)
+echo "$FULL_PATH" > "$LAST_FILE"
+
+# Link for quick access (optional, if other scripts use it)
+ln -sf "$FULL_PATH" ~/.cache/current_wallpaper
+
+# Generate pywal colors quietly
+wal -q -i "$FULL_PATH"
+
+pywalfox update
+
+# Reload waybar (kill + restart)
+pkill waybar
+sleep 0.5
+waybar &
+
+# Reload kitty colors
+pkill -USR1 kitty 2>/dev/null || true
+
+# Reload swaync
+swaync-client -rs 2>/dev/null || true
+
+# Notify with preview
+notify-send "Wallpaper Changed" "$FULL_PATH" -i "$FULL_PATH"

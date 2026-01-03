@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WALL_DIR="$HOME/wallpapers"
-LAST_FILE="/tmp/.last_wall"
+WALL_DIR="$HOME/Pictures/wallpapers"
+LAST_FILE="/.cache/.last_wall"
 WAYBAR_CSS="$HOME/.cache/wal/colors-rgba.css"
 
 # --- Collect wallpapers ---
@@ -19,16 +19,20 @@ while true; do
     [[ "$NEXT" != "$LAST" ]] && break
 done
 echo "$NEXT" > "$LAST_FILE"
+ln -sf "$NEXT" ~/.cache/current_wallpaper
 
-# --- Set wallpaper with animation ---
-swww img "$NEXT" --transition-type grow --transition-fps 60 --transition-duration 1
+swww img "$NEXT" --transition-type any --transition-fps 60 --transition-duration 1
 
-# --- Generate pywal colors ---
 wal -q -i "$NEXT"
+
+pywalfox update
 
 pkill waybar
 sleep 1
 waybar &
 
-# --- Reload kitty colors ---
 pkill -USR1 kitty 2>/dev/null
+
+swaync-client -rs
+
+notify-send "Wallpaper Changed" "$NEXT" -i "$NEXT"

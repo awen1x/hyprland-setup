@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CONFIG="$HOME/.config/hypr/hyprsunset.conf"
+
+if pgrep -x hyprsunset > /dev/null; then
+    pkill hyprsunset
+    notify-send "Hyprsunset" "Disabled" -i weather-clear
+else
+    hyprsunset &
+    notify-send "Hyprsunset" "Enabled" -i weather-clear-night
+fi
