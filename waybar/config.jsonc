@@ -7,14 +7,15 @@
         "custom/media"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/swaync"
     ],
     "modules-right": [
         "tray",
+        "custom/updates",
         "pulseaudio",
         "network",
-        "battery",
-        "custom/swaync"
+        "battery"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -66,7 +67,7 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% {icon} ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -175,5 +176,15 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/updates": {
+        "format": "{icon} {0} ",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󰞑", 
+            "updated": "󰞑"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 300 --network-interval-seconds 300"
     }
 }

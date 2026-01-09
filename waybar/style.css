@@ -121,6 +121,7 @@ window#waybar {
     margin: 6px 6px;
     border-radius: 16px;
     font-weight: 500;
+    border: 1px solid rgba(137, 180, 250, 0.18);
     transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -129,6 +130,16 @@ window#waybar {
     background: @foreground;
     color: @background;
     font-weight: 500;
+    margin-right: 0px;
+}
+
+#custom-updates {
+    padding: 2px 10px;
+    margin: 6px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(137, 180, 250, 0.18);
+    background: @color4;
+    color: @background;
 }
 
 #battery.charging,

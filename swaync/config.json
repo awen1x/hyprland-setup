@@ -1,10 +1,10 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
+  "positionX": "center",
   "positionY": "top",
   "cssPriority": "user",
-  "control-center-width": 380,
-  "control-center-height": 860,
+  "control-center-width": 300,
+  "control-center-height": 300,
   "control-center-margin-top": 2,
   "control-center-margin-bottom": 2,
   "control-center-margin-right": 1,
@@ -38,7 +38,6 @@
   },
   "widgets": [
     "label",
-    "buttons-grid",
     "mpris",
     "title",
     "dnd",
@@ -64,30 +63,6 @@
     "volume": {
       "label": "󰕾",
       "show-per-app": true
-    },
-    "buttons-grid": {
-      "actions": [
-        {
-          "label": "",
-          "command": "hyprlock"
-        },
-        {
-          "label": "",
-          "command": "systemctl suspend"
-        },
-        {
-          "label": "",
-          "command": "nm-connection-editor"
-        },
-        {
-          "label": "󰂯",
-          "command": "blueman-manager"
-        },
-        {
-          "label": "",
-          "command": "~/.config/scripts/wallpaper-selector"
-        }
-      ]
     }
   }
 }
