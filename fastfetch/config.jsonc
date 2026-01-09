@@ -20,7 +20,7 @@
             "type": "disk",
             "key": "HOME",
             "folders": "/home",
-            "keyColor": "blue"
+            "keyColor": "32"
         },
         {
             "type": "packages",
