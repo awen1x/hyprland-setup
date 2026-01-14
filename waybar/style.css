@@ -15,94 +15,6 @@ window#waybar {
     padding: 0 6px;
 }
 
-/* ─────────── WOFI LAUNCHER ─────────── */
-#custom-rofi {
-    background: @background;
-    color: @foreground;
-    font-size: 14px;
-    padding: 0 14px;
-    margin: 6px 10px;
-    border-radius: 999px;
-    transition: background 0.25s ease, color 0.25s ease;
-    border: 1px solid rgba(137, 180, 250, 0.18);
-}
-
-#custom-rofi:hover {
-    background: @foreground;
-    color: @background;
-}
-
-/* ─────────── WORKSPACES ─────────── */
-
-#workspaces {
-    background: @background;
-    border-radius: 16px;
-    padding: 2px 0px;
-    margin: 6px 10px;
-    border: 1px solid rgba(137, 180, 250, 0.18);
-}
-
-#workspaces button {
-    margin: 0 4px;
-    padding: 0 7px;
-    border-radius: 16px;
-    color: @foreground;
-    font-weight: 600;
-    opacity: 0.85;
-    transition:
-        background 0.28s ease,
-        color 0.28s ease,
-        min-width 0.28s ease,
-        opacity 0.28s ease;
-}
-
-/* Hover glow */
-#workspaces button:hover {
-    background: @color1;
-    opacity: 1;
-}
-
-/* Focused workspace */
-#workspaces button.focused {
-    background: @background;
-    color: @foreground;
-    opacity: 1;
-}
-
-/* Active workspace */
-#workspaces button.active {
-    background: @foreground;
-    color: @background;
-    opacity: 1;
-    min-width: 60px;
-}
-
-/* Urgent workspace */
-#workspaces button.urgent {
-    background: #f38ba8;
-    color: @background;
-    opacity: 1;
-}
-/* ─────────── SWAYNC ─────────── */
-
-#custom-swaync {
-    padding: 2px 10px;
-    margin: 6px 10px;
-    border-radius: 16px;
-    border: 1px solid rgba(137, 180, 250, 0.18);
-    background: @color1;
-    color: @background;
-}
-
-/* ─────────── TRAY ─────────── */
-#tray {
-    padding: 2px 6px;
-    margin: 6px 10px;
-    border-radius: 16px;
-    border: 1px solid rgba(137, 180, 250, 0.18);
-    background: @background;
-}
-
 /* ─────────── MODULE BASE STYLE ─────────── */
 #clock,
 #battery,
@@ -113,33 +25,90 @@ window#waybar {
 #network,
 #pulseaudio,
 #custom-media,
+#custom-rofi,
+#custom-swaync,
+#custom-updates,
+#tray,
 #idle_inhibitor,
 #power-profiles-daemon {
-    background: rgba(88, 91, 112, 0.35);
-    color: #cdd6f4;
-    padding: 0 14px;
+    padding: 0 10px;
     margin: 6px 6px;
     border-radius: 16px;
     font-weight: 500;
     border: 1px solid rgba(137, 180, 250, 0.18);
     transition: background 0.25s ease, color 0.25s ease;
+    background: @background;
+    color: @foreground;
+}
+
+/* ─────────── WORKSPACES ─────────── */
+#workspaces {
+    background: @background;
+    border-radius: 16px;
+    padding: 2px 0;
+    margin: 6px 6px;
+    border: 1px solid rgba(137, 180, 250, 0.18);
+}
+
+#workspaces button {
+    margin: 0 4px;
+    padding: 0 7px;
+    border-radius: 16px;
+    color: @foreground;
+    font-weight: 600;
+    opacity: 0.85;
+    transition: background 0.28s ease, color 0.28s ease, min-width 0.28s ease, opacity 0.28s ease;
+}
+
+#workspaces button:hover {
+    background: @color1;
+    opacity: 1;
+}
+
+#workspaces button.focused {
+    background: @background;
+    color: @foreground;
+    opacity: 1;
+}
+
+#workspaces button.active {
+    background: @foreground;
+    color: @background;
+    opacity: 1;
+    min-width: 60px;
+}
+
+#workspaces button.urgent {
+    background: #f38ba8;
+    color: @background;
+    opacity: 1;
 }
 
 /* ─────────── MODULE COLORS ─────────── */
-#clock {
+
+#custom-rofi:hover {
     background: @foreground;
     color: @background;
-    font-weight: 500;
-    margin-right: 0px;
 }
 
-#custom-updates {
-    padding: 2px 10px;
-    margin: 6px 10px;
-    border-radius: 16px;
-    border: 1px solid rgba(137, 180, 250, 0.18);
-    background: @color4;
-    color: @background;
+#pulseaudio.muted {
+    background: #45475a;
+    color: #9399b2;
+}
+
+#network.disconnected {
+    background: #f38ba8;
+    color: #1e1e2e;
+}
+
+#temperature {
+    background: #f9e2af;
+    color: #1e1e2e;
+}
+
+#temperature.critical {
+    background: #f38ba8;
+    color: #1e1e2e;
 }
 
 #battery.charging,
@@ -152,41 +121,6 @@ window#waybar {
     background: #f38ba8;
     color: #1e1e2e;
     animation: blink 1s ease infinite;
-}
-
-#pulseaudio {
-    background: @color7;
-    color: @background;
-}
-
-#pulseaudio.muted {
-    background: #45475a;
-    color: #9399b2;
-}
-
-#network {
-    background: @color8;
-    color: #1e1e2e;
-}
-
-#network.disconnected {
-    background: #f38ba8;
-    color: #1e1e2e;
-}
-
-#custom-media {
-    background: #94e2d5;
-    color: #1e1e2e;
-}
-
-#temperature {
-    background: #f9e2af;
-    color: #1e1e2e;
-}
-
-#temperature.critical {
-    background: #f38ba8;
-    color: #1e1e2e;
 }
 
 /* ─────────── ANIMATIONS ─────────── */

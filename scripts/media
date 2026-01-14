@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+playerctl --follow metadata --format '{{status}}|{{artist}}|{{title}}' 2>/dev/null |
+while IFS='|' read -r STATUS ARTIST TITLE; do
+  if [[ "$STATUS" == "Playing" ]]; then
+    ICON=""
+  elif [[ "$STATUS" == "Paused" ]]; then
+    ICON=""
+  else
+    echo '{"text": ""}'
+    continue
+  fi
+
+  TEXT="$ICON $ARTIST - $TITLE"
+
+  MAX=25
+  if (( ${#TEXT} > MAX )); then
+    TEXT="${TEXT:0:MAX}…"
+  fi
+
+  echo "{\"text\": \"$TEXT\"}"
+done

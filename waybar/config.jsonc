@@ -3,8 +3,8 @@
     "position": "top",
     "modules-left": [
         "custom/rofi",
-        "hyprland/workspaces",
-        "custom/media"
+        "custom/media",
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "clock",
@@ -125,17 +125,11 @@
         }
     },
     "custom/media": {
-        "format": "{icon} {text}",
         "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "~/.config/scripts/media",
+        "on-click": "playerctl play-pause"
     },
+
     "custom/rofi": {
         "format": "",
         "on-click": "rofi -show drun -show-icons",
@@ -181,7 +175,7 @@
         "format": "{icon} {0} ",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󰞑", 
+            "has-updates": "󰞑",
             "updated": "󰞑"
         },
         "exec-if": "which waybar-module-pacman-updates",
