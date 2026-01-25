@@ -1,10 +1,9 @@
-// -*- mode: jsonc -*-
 {
     "position": "top",
     "modules-left": [
         "custom/rofi",
-        "custom/media",
         "hyprland/workspaces"
+        //"custom/media"
     ],
     "modules-center": [
         "clock",
@@ -17,52 +16,18 @@
         "network",
         "battery"
     ],
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "tray": {
         "icon-size": 16,
-        "spacing": 10,
-        "icons": {
-            "blueman": "bluetooth",
-            "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        }
+        "spacing": 7
     },
     "clock": {
-        // "timezone": "America/New_York",
         "format": "󰥔 {0:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": " {:%Y-%m-%d}"
     },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
-    },
     "battery": {
         "states": {
-            // "good": 95,
-            "warning": 30,
+            "warning": 20,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
@@ -70,8 +35,6 @@
         "format-charging": "{capacity}% {icon} ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": [
             "",
             "",
@@ -80,36 +43,19 @@
             ""
         ]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
     "network": {
         "format-wifi": " {essid}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{essid}",
-        "tooltip-format": " ",
+        "tooltip-format": " {none} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
-        "scroll-step": 1,
-        "format": "{icon} {volume}%",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
+        "format-muted": "",
+        "tooltip-format": " {none}",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -122,14 +68,14 @@
                 "",
                 ""
             ]
-        }
+        },
+        "scroll-step": 1
     },
     "custom/media": {
         "return-type": "json",
         "exec": "~/.config/scripts/media",
         "on-click": "playerctl play-pause"
     },
-
     "custom/rofi": {
         "format": "",
         "on-click": "rofi -show drun -show-icons",
@@ -179,6 +125,6 @@
             "updated": "󰞑"
         },
         "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --interval-seconds 300 --network-interval-seconds 300"
+        "exec": "waybar-module-pacman-updates --interval-seconds 3600 --network-interval-seconds 3600"
     }
 }
