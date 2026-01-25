@@ -86,9 +86,18 @@ window#waybar {
 
 /* ─────────── MODULE COLORS ─────────── */
 
+
+#custom-rofi {
+    margin-left: 18px;
+}
+
 #custom-rofi:hover {
     background: @foreground;
     color: @background;
+}
+
+#network{
+    margin-right: 18px;
 }
 
 #pulseaudio.muted {
@@ -128,4 +137,12 @@ window#waybar {
     50% {
         opacity: 0.5;
     }
+}
+
+/* ─────────── TOOLTIP ─────────── */
+tooltip {
+    background: @background;
+    border-radius: 16px;
+    border: 1px solid rgba(137, 180, 250, 0.18);
+    color: @foreground;
 }
