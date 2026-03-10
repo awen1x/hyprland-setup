@@ -2,8 +2,8 @@
     "position": "top",
     "modules-left": [
         "custom/rofi",
-        "hyprland/workspaces"
-        //"custom/media"
+        "hyprland/workspaces",
+        "custom/media"
     ],
     "modules-center": [
         "clock",
