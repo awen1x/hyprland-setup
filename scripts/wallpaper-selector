@@ -45,8 +45,8 @@ done
 
 # --- Apply wallpaper and full post-processing (same as your random script) ---
 
-# Set with swww animation
-swww img "$FULL_PATH" --transition-type any --transition-fps 60 --transition-duration 1
+# Set with awww animation
+awww img "$FULL_PATH" --transition-type any --transition-fps 60 --transition-duration 1
 
 # Save as last used (for random script compatibility)
 echo "$FULL_PATH" > "$LAST_FILE"

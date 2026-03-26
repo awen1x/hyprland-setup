@@ -21,7 +21,7 @@ done
 echo "$NEXT" > "$LAST_FILE"
 ln -sf "$NEXT" ~/.cache/current_wallpaper
 
-swww img "$NEXT" --transition-type any --transition-fps 60 --transition-duration 1
+awww img "$NEXT" --transition-type any --transition-fps 60 --transition-duration 1
 
 wal -q -i "$NEXT"
 
