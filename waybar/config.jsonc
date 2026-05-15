@@ -2,8 +2,8 @@
     "position": "top",
     "modules-left": [
         "custom/rofi",
-        "hyprland/workspaces",
-        "custom/media"
+        "hyprland/workspaces"
+        //"custom/media"
     ],
     "modules-center": [
         "clock",
@@ -44,12 +44,12 @@
         ]
     },
     "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
         //"tooltip-format": "{essid}",
         "tooltip-format": " {none} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-linked": "󱚿 {ifname}",
+        "format-disconnected": "⚠ Disconnected"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
