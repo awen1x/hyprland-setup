@@ -26,6 +26,11 @@ Everything lives under `~/.dotfiles` and is meant to be symlinked into `~/.confi
 
 >  \* Packages that aren't really needed, it's really just to show-off the rice, lol. If not used, feel free to delete the corresponding directory, it shouldn't break anything.
 
+## Fonts
+- `JetBrainsMono Nerd Font`
+- `Lexend`
+- `SF Pro Display`
+
 ## 🛠 Installation Instructions
 
 1. **Install required packages** (example uses pacman/AUR helpers):
