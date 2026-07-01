@@ -1,7 +1,7 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 * {
-    font: "Lexend, sans-serif 11";
+    font: "SF Pro Display, sans-serif 11";
     font-weight: 600;
     background-color: transparent;
     text-color: @foreground;
