@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+WAL_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/wal"
+COLORS_JSON="$WAL_CACHE/colors.json"
+COLORS_LUA="$WAL_CACHE/colors.lua"
+TEMPLATE="${XDG_CONFIG_HOME:-$HOME/.config}/wal/templates/colors.lua"
+
+python3 - "$COLORS_JSON" "$COLORS_LUA" "$TEMPLATE" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+colors_json = Path(sys.argv[1])
+colors_lua = Path(sys.argv[2])
+template = Path(sys.argv[3])
+
+data = json.loads(colors_json.read_text())
+special = data["special"]
+colors = data["colors"]
+
+fallback = """return {
+    background = "{background}",
+    foreground = "{foreground}",
+
+    color0 = "{color0}",
+    color1 = "{color1}",
+    color2 = "{color2}",
+    color3 = "{color3}",
+    color4 = "{color4}",
+    color5 = "{color5}",
+    color6 = "{color6}",
+    color7 = "{color7}",
+
+    color8 = "{color8}",
+    color9 = "{color9}",
+    color10 = "{color10}",
+    color11 = "{color11}",
+    color12 = "{color12}",
+    color13 = "{color13}",
+    color14 = "{color14}",
+    color15 = "{color15}",
+}
+"""
+
+source = template.read_text() if template.exists() else fallback
+values = {
+    "background": special["background"],
+    "foreground": special["foreground"],
+}
+values.update({f"color{i}": colors[f"color{i}"] for i in range(16)})
+
+for key, value in values.items():
+    source = source.replace("{" + key + "}", value)
+
+source = source.replace("{{", "{").replace("}}", "}")
+
+colors_lua.parent.mkdir(parents=True, exist_ok=True)
+colors_lua.write_text(source)
+PY

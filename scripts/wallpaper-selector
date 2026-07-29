@@ -2,6 +2,7 @@
 
 WALL_DIR="$HOME/Pictures/wallpapers"
 LAST_FILE="$HOME/.cache/.last_wall"  # Fixed path (was "/.cache/.last_wall" before)
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 # Ensure cache directory exists
 mkdir -p "$(dirname "$LAST_FILE")"
@@ -55,7 +56,15 @@ echo "$FULL_PATH" > "$LAST_FILE"
 ln -sf "$FULL_PATH" ~/.cache/current_wallpaper
 
 # Generate pywal colors quietly
-wal -q -i "$FULL_PATH"
+if ! wal -q -i "$FULL_PATH"; then
+    notify-send "Pywal" "Failed to generate colors" -i "$FULL_PATH"
+    exit 1
+fi
+
+if ! "$SCRIPT_DIR/generate-wal-lua"; then
+    notify-send "Wal Lua Colors" "Failed to generate ~/.cache/wal/colors.lua" -i "$FULL_PATH"
+    exit 1
+fi
 
 pywalfox update
 

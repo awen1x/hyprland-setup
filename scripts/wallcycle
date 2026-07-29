@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 WALL_DIR="$HOME/Pictures/wallpapers"
-LAST_FILE="/.cache/.last_wall"
-WAYBAR_CSS="$HOME/.cache/wal/colors-rgba.css"
+LAST_FILE="$HOME/.cache/.last_wall"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+mkdir -p "$(dirname "$LAST_FILE")"
 
 # --- Collect wallpapers ---
 mapfile -t WALLS < <(find "$WALL_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \))
@@ -14,16 +16,28 @@ LAST=""
 [ -f "$LAST_FILE" ] && LAST=$(cat "$LAST_FILE")
 
 # --- Pick random non-repeating ---
-while true; do
-    NEXT="${WALLS[RANDOM % COUNT]}"
-    [[ "$NEXT" != "$LAST" ]] && break
-done
+if [ "$COUNT" -eq 1 ]; then
+    NEXT="${WALLS[0]}"
+else
+    while true; do
+        NEXT="${WALLS[RANDOM % COUNT]}"
+        [[ "$NEXT" != "$LAST" ]] && break
+    done
+fi
 echo "$NEXT" > "$LAST_FILE"
 ln -sf "$NEXT" ~/.cache/current_wallpaper
 
 awww img "$NEXT" --transition-type any --transition-fps 60 --transition-duration 1
 
-wal -q -i "$NEXT"
+if ! wal -q -i "$NEXT"; then
+    notify-send "Pywal" "Failed to generate colors" -i "$NEXT"
+    exit 1
+fi
+
+if ! "$SCRIPT_DIR/generate-wal-lua"; then
+    notify-send "Wal Lua Colors" "Failed to generate ~/.cache/wal/colors.lua" -i "$NEXT"
+    exit 1
+fi
 
 pywalfox update
 
