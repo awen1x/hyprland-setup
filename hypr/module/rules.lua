@@ -43,3 +43,13 @@ hl.layer_rule({
     match = { namespace = "rofi" },
     animation = "slide bottom",
 })
+
+hl.window_rule({
+    match = { class = "firefox" },
+    opacity = "1.0 override 0.8 override"
+})
+
+hl.window_rule({
+    match = { class = "steam_app_[0-9]+" },
+    opacity = "1.0 override 0.8 override"
+})
