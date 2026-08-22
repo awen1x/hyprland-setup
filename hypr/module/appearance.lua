@@ -7,8 +7,8 @@ hl.config({
 
         border_size = 1,
         col = {
-            active_border = Wal.foreground,
-            inactive_border = Wal.background,
+            active_border = "rgba(137, 180, 250, 0.18)",
+            inactive_border = transparent,
         },
         layout = dwindle,
         allow_tearing = true,
