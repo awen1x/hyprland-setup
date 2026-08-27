@@ -8,7 +8,7 @@ hl.config({
         border_size = 1,
         col = {
             active_border = "rgba(137, 180, 250, 0.18)",
-            inactive_border = transparent,
+            inactive_border = "rgba(137, 180, 250, 0.18)",
         },
         layout = dwindle,
         allow_tearing = true,
