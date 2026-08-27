@@ -1,10 +1,11 @@
-# Hyprland Ricing Showcase :D
-
-Welcome to a polished, minimal Hyprland configuration designed for a fast, aesthetic setup on Arch‑based systems. This repository collects all the theming, configs and helper scripts I use daily to make Hyprland feel slick and personal.
+# awen1x's Hyprland Ricing Setup ✨
+<img src="./preview/1.png">
+<img src="./preview/2.png">
+<img src="./preview/3.png">
 
 ## What’s included
 
-- **Hyprland** configuration with custom bindings, rules, and monitor setup
+- **Hyprland** lua configuration with custom bindings, rules, and monitor setup
 - Themed **Waybar**, **Wlogout**, **SwayNC** notifications
 - Automatic colors via **Wal**  (**Kitty**, **Waybar**, and **Rofi** themes)
 - Tiny scripts like `wallpaper-selector`, `hyprsunset-toggle`, and `wallcycle`
@@ -24,14 +25,13 @@ Everything lives under `~/.dotfiles` and is meant to be symlinked into `~/.confi
 - `fastfetch`
 - `cava` *
 
->  \* Packages that aren't really needed, it's really just to show-off the rice, lol. If not used, feel free to delete the corresponding directory, it shouldn't break anything.
+>  \* Packages that is used to flex the setup, doesn't provide any production value
 
 ## Fonts
-- `JetBrainsMono Nerd Font`
-- `Lexend`
+- `JetBrainsMono Nerd Font` (icons)
 - `SF Pro Display`
 
-## 🛠 Installation Instructions
+## Installation
 
 1. **Install required packages** (example uses pacman/AUR helpers):
    ```bash
@@ -61,31 +61,26 @@ Everything lives under `~/.dotfiles` and is meant to be symlinked into `~/.confi
 
 ## Keybindings
 
-Keybindings! Toss the mice out and check out `hypr/conf.d/binding.conf`.
+Keybindings! Toss the mice out and check out `hypr/module/binds.lua`.
 
-- **$SUPER+Q**: launch terminal.
-- **$SUPER+W** / **$SUPER+SHIFT+W**: cycle wallpaper / open selector.
-- **$SUPER+C**: close focused window.
-- **$SUPER+M**: exit Hyprland.
-- **$SUPER+B**: turn on Waybar.
-- **$SUPER+SHIFT+B**: turn off Waybar.
-- **$SUPER+N**: open SwayNC control panel.
-- **$SUPER+E**: launch editor (`yazi` in terminal).
-- **$SUPER+F**: toggle floating for focused window.
-- **$SUPER+R**: run launcher (`rofi` by default).
-- **$SUPER+P**: pseudo mode (tiling resize).
-- **$SUPER+SHIFT+P**: color picker (`hyprpicker`).
-- **$SUPER+J / $SUPER+L**: split toggling and focus movement.
-- **$SUPER+L**: lock screen; **$SUPER+SHIFT+L**: logout menu.
-- **$SUPER+S**: toggle sunset color theme.
-- **$SUPER + arrow keys**: change focus direction.
-- **$SUPER+[0-9] / 0**: switch to workspace 1–10 (with **SHIFT** moves window).
-- **Volume/Brightness/Media keys**: controlled via `wpctl`, `brightnessctl`, and `playerctl`.
+- **SUPER+Q**: launch terminal.
+- **SUPER+W** / ** SUPER+SHIFT+W**: cycle wallpaper / open selector.
+- **SUPER+C**: close focused window.
+- **SUPER+M**: exit Hyprland.
+- **SUPER+B**: Waybar toggler.
+- **SUPER+N**: open SwayNC control panel.
+- **SUPER+E**: launch editor (`yazi` in terminal).
+- **SUPER+F**: toggle floating for focused window.
+- **SUPER+R**: run launcher (`rofi` by default).
+- **SUPER+L**: lock screen;
+- **SUPER+SHIFT+L**: logout menu.
+- **SUPER + arrow keys**: change focus direction.
+- **SUPER+[0-9] / 0**: switch to workspace 1–10 (with **SHIFT** moves window).
 - **Print**: screenshot region to `~/Pictures/screenshots/`.
 
-## Enjoy! <3
+## Enjoy! ❤️
 
-You might need to make some changes depending what device you're using. If using laptop, go to ``hypr/monitors.conf`` and remove `HDMI-A-1` since the monitor is embedded. Also change if you don't use HDMI cable.
+You might need to make some changes depending what device you're using. If using laptop, go to ``hypr/monitors.conf`` and remove `HDMI-A-1` since the monitor is embedded. Also change if you use a different monitor cable.
+If you have any questions or help just shoot me a Discord friend request @awen1x
 
-Feel free to edit any file under `~/.dotfiles` and the changes should take effect immediately via the symlinks. This setup is meant to be a starting point; feel free to adapt it to your workflow!
-
+The changes should take effect immediately via the symlinks. This setup is meant to be a starting point; feel free to adapt it to your workflow!
