@@ -2,6 +2,7 @@
 <img src="./preview/1.png">
 <img src="./preview/2.png">
 <img src="./preview/3.png">
+<img src="./preview/4.png">
 
 ## What’s included
 
