@@ -3,7 +3,6 @@
     "modules-left": [
         "custom/rofi",
         "hyprland/workspaces"
-        //"custom/media"
     ],
     "modules-center": [
         "clock",
@@ -71,11 +70,6 @@
         },
         "scroll-step": 1
     },
-    "custom/media": {
-        "return-type": "json",
-        "exec": "~/.config/scripts/media",
-        "on-click": "playerctl play-pause"
-    },
     "custom/rofi": {
         "format": "",
         "on-click": "rofi -show drun -show-icons",
@@ -94,10 +88,10 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "󱅫", // Bell with notifications
-            "none": "󰂚", // No notifications
-            "dnd-notification": "󰂛", // DND with notifications
-            "dnd-none": "󰂛", // DND no notifications
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
             "inhibited-notification": "",
             "inhibited-none": "",
             "dnd-inhibited-notification": "",
